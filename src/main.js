@@ -16,6 +16,15 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
+// 引用axios，并设置基础URL为后端服务api地址
+
+axios.defaults.baseURL = "http://localhost:8090"
+//设置全局，每次ajax请求携带cookies
+// axios.defaults.withCredentials = true
+// 将API方法绑定到全局
+Vue.prototype.$axios = axios
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

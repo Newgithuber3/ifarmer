@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import {getTableData} from "../api/home";
 import axios from "axios"
 
 export default {
@@ -49,7 +48,7 @@ export default {
       //   console.log(res.data+"111");
       //
       // })
-      axios.get('http://localhost:8090/static/data.json').then((res)=>{
+      axios.get('/static/data.json').then((res)=>{
         console.log(res.data);
         this.tableData = res.data.tableData;
       })
