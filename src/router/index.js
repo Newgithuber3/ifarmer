@@ -14,6 +14,21 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: () => import('views/home')
+    },
+    {
+      path:'/login',
+      name:'login',
+      component: () => import('views/login')
+    },
+    {
+      path:'/register',
+      name:'register',
+      component: () => import('views/register')
+    },
+    {
+      path:'/cart',
+      name:'cart',
+      component: () =>import('views/cart')
     }
   ]
 })
