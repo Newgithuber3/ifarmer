@@ -9,8 +9,8 @@
            active-text-color="blue">
     <el-submenu index="1">
       <template slot="title" >账户设置</template>
-      <el-menu-item index="1-1"><a class="one" href="page1">个人信息</a></el-menu-item>
-      <el-menu-item index="1-2"><a class="two" href="page2">收货地址</a></el-menu-item>
+      <el-menu-item index="1-1"><a class="one" href="page1.vue">个人信息</a></el-menu-item>
+      <el-menu-item index="1-2"><a class="two" href="page2.vue">收货地址</a></el-menu-item>
     </el-submenu>
   </el-menu>
 
