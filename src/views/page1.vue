@@ -1,6 +1,7 @@
 <template>
   <el-container>
     <div class="P_info">
+      <div class="head">基本信息</div>
       <div class="username">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="用户名">
@@ -32,27 +33,12 @@
       </div>
       <div class="container">
         <div class="block">
-          生日：
-          &nbsp&nbsp&nbsp
-          <span class="demonstration">年</span>
+          生日
+          &nbsp
           <el-date-picker
             v-model="value1"
-            type="year"
-            placeholder="选择年">
-          </el-date-picker>
-          &nbsp&nbsp&nbsp
-          <span class="demonstration">月</span>
-          <el-date-picker
-            v-model="value2"
-            type="month"
-            placeholder="选择月">
-          </el-date-picker>
-          &nbsp&nbsp&nbsp
-          <span class="demonstration">日</span>
-          <el-date-picker
-            v-model="value3"
-            type="day"
-            placeholder="选择日">
+            type="date"
+            placeholder="选择日期">
           </el-date-picker>
         </div>
       </div>
@@ -68,42 +54,59 @@ export default {
   name: "page1",
   data () {
     return {
-      radio: '1'
+      radio: '1',
+      value1: '',
     };
   }
 }
 </script>
 
 <style scoped>
+.P_info{
+  margin-left: 4cm;
+  margin-right: 2cm;
+  border-left-style: outset;
+  border-right-style: inset;
+}
+.head{
+  border-bottom-style: inset;
+  line-height: 3cm;
+  font-size: 15px;
+  color: #736f66;
+}
 .username{
+  margin-top: 1cm;
+  line-height: 3cm;
   position: center;
-  margin-left: 600px;
+  margin-left: 450px;
   margin-right: 500px;
 }
 .nickname{
+  line-height: 3cm;
   position: center;
-  margin-left: 600px;
+  margin-left: 450px;
   margin-right: 500px;
 }
 .telphone{
+  line-height: 3cm;
   position:center;
-  margin-left: 600px;
+  margin-left: 450px;
   margin-right: 500px;
 }
 .sex{
+  line-height: 3cm;
   position:center;
-  margin-left: 600px;
+  margin-left: 450px;
   margin-right: 500px;
 }
 .container{
+  line-height: 1cm;
   position: center;
-  margin-left: 100px;
   font-size: 15px;
   color: #736f66;
 }
 .submit{
 
-  margin-left: 200px;
   line-height:3cm ;
 }
 </style>

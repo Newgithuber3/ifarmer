@@ -1,5 +1,6 @@
 <template>
   <div class="R_address">
+    <div class="head">收货地址</div>
     <div class="person">
     <el-form ref="person" :model="form" label-width="80px">
       <el-form-item label="收货人">
@@ -73,15 +74,28 @@ export default {
 </script>
 
 <style scoped>
+.R_address{
+  margin-left: 4cm;
+  margin-right: 4cm;
+  border-left-style: outset;
+  border-right-style: inset;
+}
+.head{
+  border-bottom-style: inset;
+  line-height: 3cm;
+  font-size: 15px;
+  color: #736f66;
+}
 .person{
+  margin-top: 1cm;
   position: center;
-  margin-left: 500px;
-  margin-right: 600px;
+  margin-left: 450px;
+  margin-right: 500px;
 }
 .telphone{
   position: center;
-  margin-left: 500px;
-  margin-right: 600px;
+  margin-left: 450px;
+  margin-right: 500px;
 }
 .address{
   font-size: 15px;
@@ -90,13 +104,12 @@ export default {
 .address_detail{
   position: center;
   line-height: 3cm;
-  margin-left: 550px;
-  margin-right: 500px;
+  margin-left: 450px;
+  margin-right: 450px;
   font-size: 15px;
   color: #736f66;
 }
 .add{
-  position: center;
   line-height: 3cm;
 }
 </style>
