@@ -41,7 +41,9 @@
           <div class="Net_weight">净含量：</div>
           <div class="pro_buy">
             <el-row>
-              <el-button  class="N_buy"type="primary">立即购买</el-button>
+              <el-button  class="N_buy"type="primary">立即购买
+
+              </el-button>
               <el-popconfirm
                 confirm-button-text='是的'
                 cancel-button-text='取消'
