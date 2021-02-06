@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "code": 20000,
+  "message": "成功",
+  "data": {
+    "pageInfo": {
+      "pageNum": 1,
+      "pageSize": 6,
+      "size": 2,
+      "orderBy": null,
+      "startRow": 1,
+      "endRow": 2,
+      "total": 2,
+      "pages": 1,
+      "list": [
+        {
+          "id": 1,
+          "uid": 1,
+          "addtime": "2021-01-29T16:00:00.000+00:00",
+          "productid": 101,
+          "number": 4,
+          "price": 4.2,
+          "productname": "山药",
+          "productimg": "/static/images/firstImage/cart-product1.png"
+        },
+        {
+          "id": 2,
+          "uid": 1,
+          "addtime": "2021-01-31T03:16:09.000+00:00",
+          "productid": 102,
+          "number": 3,
+          "price": 3.5,
+          "productname": "芋头" ,
+          "productimg": "/static/images/firstImage/cart-product2.png"
+        }
+      ],
+      "firstPage": 1,
+      "prePage": 0,
+      "nextPage": 0,
+      "lastPage": 1,
+      "isFirstPage": true,
+      "isLastPage": true,
+      "hasPreviousPage": false,
+      "hasNextPage": false,
+      "navigatePages": 8,
+      "navigatepageNums": [
+        1
+      ]
+    }
+  }
+}

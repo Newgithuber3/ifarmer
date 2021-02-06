@@ -142,7 +142,7 @@ export default {
   background-color: #ffffff;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('/static/images/firstimage/login-background.png');
+  background-image: url('/static/images/firstImage/login-background.png');
 }
 .el-footer {
   margin: 25px;
