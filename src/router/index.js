@@ -18,7 +18,7 @@ export default new Router({
       component: () => import('@/views/home')
     },
     {
-      path: '/product',
+      path: '/product_main',
       name: 'product_main',
       component: () => import('@/views/product_main')
     },
