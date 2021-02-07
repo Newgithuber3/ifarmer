@@ -53,14 +53,14 @@ export default new Router({
       component: () =>import('views/user_settings')
     },
     {
-      path:'/page1.vue',
-      name:'page1.vue',
-      component: () =>import('views/page1.vue')
+      path:'/page1',
+      name:'page1',
+      component: () =>import('views/page1')
     },
     {
-      path:'/page2.vue',
-      name:'page2.vue',
-      component: () =>import('views/page2.vue')
+      path:'/page2',
+      name:'page2',
+      component: () =>import('views/page2')
     }
   ]
 })
