@@ -33,9 +33,14 @@ export default new Router({
       component: () => import('views/login')
     },
     {
-      path:'/register',
-      name:'register',
-      component: () => import('views/register')
+      path:'/cart',
+      name:'cart',
+      component: () => import('views/cart')
+    },
+    {
+      path:'/order',
+      name:'order',
+      component: () => import('views/order')
     },
     {
       path:'/user_settings',
