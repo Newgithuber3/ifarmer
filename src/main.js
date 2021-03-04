@@ -10,6 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import mainNavBar from './components/common/mainNavBar.vue';
 
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI);
@@ -29,6 +30,6 @@ Vue.prototype.$axios = axios
 new Vue({
   el: '#app',
   router,
-  components: {App},
+  components: {App,mainNavBar},
   template: '<App/>'
 })
