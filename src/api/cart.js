@@ -31,3 +31,11 @@ export function updateNum(params) {
     params
   });
 }
+
+export function addCart(params) {
+  return request({
+    url: "/cart/addCart",
+    method: "get",
+    params
+  });
+}

@@ -14,8 +14,8 @@
               ></i>
             </el-col>
             <el-col :span="20" style="margin-left: 10px">
-              <input type="text" id="in" />
-              <button class="btn_search">搜索</button>
+              <input v-model="searchInput" type="text" id="in" />
+              <button class="btn_search" @click="search(searchInput)">搜索</button>
             </el-col>
           </el-row>
         </div>
@@ -29,7 +29,7 @@
                 :key="item"
               >
                 <el-col :span="7" v-for="items in item" :key="items">
-                  <el-link>{{ items.name }}</el-link>
+                  <el-link @click="search(items.name)">{{ items.name }}</el-link>
                 </el-col>
               </el-row>
             </div>
@@ -189,6 +189,7 @@ export default {
       imgList: imgListDefault,
       category: Object.assign({}, categoryDefault),
       activeName: "first",
+      searchInput: "",
       avatarUrl: require("@/assets/imgs/icon.jpg"),
       active: "",
       productList: [],

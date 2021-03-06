@@ -69,8 +69,8 @@ export default {
     },
     detail() {
       this.$router.push({
-        path: "/productList",
-        query: { productName: this.product.name }
+        path: "/detail",
+        query: { productId: this.product.id }
       });
     },
     createNum() {

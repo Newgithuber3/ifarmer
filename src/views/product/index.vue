@@ -20,6 +20,7 @@
           type="info"
           :key="item"
           style="margin: 20px"
+          @click="filterSearch(item.name, 1)"
           >{{ item.name }}</el-link
         >
       </div>
@@ -30,6 +31,7 @@
           type="info"
           :key="item"
           style="margin: 20px"
+          @click="filterSearch(item.name, 2)"
           >{{ item.name }}</el-link
         >
       </div>
@@ -107,7 +109,9 @@ export default {
       pageSize: 10,
       total: "",
       origin: Object.assign({}, originDefault),
+      originSelect: "",
       brand: Object.assign({}, brandDefault),
+      brandSelect: "",
       orderBy: "销量"
     };
   },
@@ -117,15 +121,38 @@ export default {
   },
   methods: {
     search() {
+      let searchName = "";
+      searchName += this.productName;
+      if (this.originSelect !== null || this.originSelect !== "") {
+        searchName += " " + this.originSelect;
+        this.originSelect = "";
+        this.productName = searchName;
+      }
+      if (this.brandSelect !== null || this.brandSelect !== "") {
+        searchName += " " + this.brandSelect;
+        this.brandSelect = "";
+        this.productName = searchName;
+      }
       const params = {
         pageNum: this.currentPage,
         pageSize: this.pageSize,
-        name: this.productName
+        name: searchName.trim()
       };
       getProductList(params).then(res => {
         this.list = res.data.pageInfo.list;
         this.total = res.data.pageInfo.total;
       });
+    },
+    filterSearch(filterName, cmd) {
+      if (filterName !== null && filterName !== "" && filterName.length > 0) {
+        console.log("this");
+        if (cmd === 1) {
+          this.originSelect = filterName;
+        } else {
+          this.brandSelect = filterName;
+        }
+        this.search();
+      }
     },
     handleSizeChange(val) {
       this.pageSize = val;
