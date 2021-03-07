@@ -8,7 +8,7 @@
   >
     <el-card :body-style="{ padding: '0px' }" class="card">
       <img
-        src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+        :src="product.productDetail.imageurl"
         class="image"
       />
       <div style="padding: 14px;">

@@ -10,7 +10,7 @@
         <div class="inf">
           <div class="demo-image__placeholder">
             <div class="block">
-              <img src="@/assets/imgs/apple.jpg" class="picture" />
+              <img :src="product.productDetail.imageurl" class="picture" />
             </div>
           </div>
           <div class="inf_detail">
