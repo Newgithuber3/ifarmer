@@ -63,7 +63,7 @@
                   />
                 </td>
                 <td class="td-product">
-                  <img :src="item.productimg" width="100" height="100" alt="" />
+                  <img :src="item.productimage" width="100" height="100" alt="" />
                   <div class="product-info">
                     <h6>{{ item.productname }}</h6>
                   </div>

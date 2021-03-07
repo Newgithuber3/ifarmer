@@ -50,7 +50,7 @@
                   <tr v-for="(item, index) in productList">
                     <td class="td-product">
                       <img
-                        :src="item.productimg"
+                        :src="item.productimage"
                         width="100"
                         height="100"
                         alt=""
