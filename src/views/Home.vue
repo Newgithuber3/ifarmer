@@ -231,10 +231,11 @@ export default {
 };
 </script>
 <style scoped>
-/*.list {
-}
+/*.list {*/
+/*}*/
 .category {
-}*/
+  font: 21px/21px 'microsoft yahei';
+}
 .links {
   width: 97%;
   height: 510px;

@@ -39,34 +39,36 @@
                 </el-rate>
               </div>
             </div>
-            <label>数量：</label>
-            <el-input-number
-              size="small"
-              v-model="number"
-              :min="1"
-              :max="100"
-              label="描述文字"
-            ></el-input-number>
-            <div class="pro_buy" style="margin-left: 20%">
+            <div class="number">
+              <label>数量：</label>
+              <el-input-number
+                  size="small"
+                  v-model="number"
+                  :min="1"
+                  :max="100"
+                  label="描述文字"
+              ></el-input-number>
+            </div>
+            <div class="pro_buy" style="margin-left: 50px">
               <el-row :gutter="1">
-                <el-col :span="8"
+                <el-col :span="12"
                   ><el-button class="N_buy" type="primary"
                     >立即购买
                   </el-button></el-col
                 >
-                <el-col :span="8">
+                <el-col :span="10">
                   <el-button
                       @click="addCart"
                     class="J_shop "
                     type="primary"
-                    icon="el-icon-goods"
+                    icon="el-icon-shopping-cart-1"
                     >加入购物车</el-button
                   >
                 </el-col>
               </el-row>
             </div>
             <div class="promise">
-              <div class="long">
+              <div class="long" style="margin-left: 40px">
                 <strong>服务承诺</strong>
                 &nbsp; 不支持七天无理由退换 &nbsp; 正品保证 &nbsp; 极速退款
               </div>
@@ -88,7 +90,9 @@
             <span class="more_row1">
               商品详情介绍：
             </span>
-            <div class="more_row2">品牌名称：</div>
+            <div class="more_row2">
+              <strong>品牌名称：</strong>
+            </div>
             <div class="more_row3">
               <div class="parameter">
                 <strong>产品参数：</strong>
@@ -104,19 +108,15 @@
           </div>
         </div>
 
-        <div class="inf_store">
-          <div class="store_name">店铺名：{{ product.seller.storename }}</div>
-          <div class="store_detail">
-            <span class="row1">描述</span>
-            <span class="row2">服务</span>
-            <span class="row3">物流</span>
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span style="float: left">店铺名：{{ product.seller.storename }}</span>
           </div>
-          <div class="store_more">
-            <a style="color: mediumspringgreen" href="#">进店逛逛</a>
-            &nbsp&nbsp&nbsp&nbsp
-            <a style="color: mediumspringgreen" href="#">收藏店铺</a>
+          <div class="text item">
+            <a style="color: royalblue;text-decoration: none;line-height: 10px" href="#">进店逛逛&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a style="color: royalblue;text-decoration: none" href="#">收藏店铺</a>
           </div>
-        </div>
+        </el-card>
       </el-main>
       <el-footer> </el-footer>
     </el-container>
@@ -181,8 +181,8 @@ export default {
 
 <style scoped>
 .picture {
-  width: 350px;
-  height: 350px;
+  width: 460px;
+  height: 380px;
   margin: 50px;
 }
 .product_detail {
@@ -226,31 +226,34 @@ export default {
 }
 .el-main {
   border-radius: 1px;
-  background-color: beige;
+  /*background-color: beige;*/
   color: #333;
   text-align: center;
   line-height: 160px;
-  margin-left: 3cm;
-  margin-right: 3cm;
+  /*margin-left: 3cm;*/
+  /*margin-right: 3cm;*/
 }
 .inf_detail {
   border-radius: 1px;
   float: left;
   width: 600px;
-  background-color: azure;
+  /*background-color: azure;*/
+}
+.number {
+  line-height: 90px;
 }
 .pro_name {
   line-height: 90px;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
 }
 .pro_price {
   line-height: 30px;
-  font-size: 40px;
+  font-size: 30px;
   color: red;
 }
 .pro_row {
-  line-height: 50px;
+  line-height: 40px;
   font-size: 20px;
   color: tan;
   font-family: 华文细黑;
@@ -258,6 +261,7 @@ export default {
 .long {
   font-family: 华文细黑;
   font-size: 20px;
+  line-height: 60px;
 }
 .promise {
   font-size: 10px;
@@ -270,6 +274,7 @@ export default {
   line-height: 30px;
 }
 .pro_buy {
+  line-height: 30px;
 }
 .N_buy {
   background-color: blanchedalmond;
@@ -289,8 +294,10 @@ export default {
   float: right;
   width: 600px;
   margin-right: 70px;
+  margin-left: 20px;
   line-height: normal;
-  border: lightgrey;
+  /*border: lightgrey;*/
+  font-size: 18px;
 }
 
 body > .el-container {
@@ -309,29 +316,26 @@ body > .el-container {
 .el-icon-arrow-down {
   font-size: 12px;
 }
-.inf_store {
-  width: 12cm;
-  margin-top: 520px;
-  margin-left: 1cm;
-  background-color: blanchedalmond;
-  border: 1px dimgray;
+
+.box-card {
+  width: 360px;
+  margin-left: 90px;
+  font-size: 18px;
+  line-height: 80px;
 }
-.store_name {
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 90px;
-  margin-top: 0px;
+
+.item {
+  margin:5px
 }
-.row1 {
-  border-width: 200px;
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
 }
-.row2 {
-  border-width: 200px;
+.clearfix:after {
+  clear: both;
 }
-.row3 {
-  border-width: 200px;
-}
-.store_more {
-  font-size: 20px;
-}
+
+
 </style>
