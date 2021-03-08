@@ -91,18 +91,15 @@
               商品详情介绍：
             </span>
             <div class="more_row2">
-              <strong>品牌名称：</strong>
+              <strong>商品名称：{{ product.productDetail.name}}</strong>
             </div>
             <div class="more_row3">
               <div class="parameter">
                 <strong>产品参数：</strong>
-                <div id="para_row1">厂名：</div>
-                <div id="para_row2">厂址：</div>
-                <div id="para_row3">联系方式：</div>
-                <div id="para_row4">保质期：</div>
-                <div id="para_row5">产地：</div>
-                <div id="para_row6">包装方式：</div>
-                <div id="para_row7">食用方式：</div>
+                <div id="para_row1">产地：{{product.productParameter.origin}}</div>
+                <div id="para_row2">生产日期：{{product.productParameter.productionDate}}：</div>
+                <div id="para_row3">保质期：{{product.productParameter.expirationDate}}</div>
+                <div id="para_row4">备注：{{product.productParameter.note}}</div>
               </div>
             </div>
           </div>
@@ -295,7 +292,7 @@ export default {
   width: 600px;
   margin-right: 70px;
   margin-left: 20px;
-  line-height: normal;
+  line-height: 30px;
   /*border: lightgrey;*/
   font-size: 18px;
 }
