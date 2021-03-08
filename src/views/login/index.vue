@@ -7,6 +7,9 @@
         </div>
       </el-header>
       <el-main>
+        <div class="background">
+          <img :src="imgSrc" width="100%" height="100%" alt=""/>
+        </div>
         <div class="login-main">
           <el-form
             class="login-form"
@@ -64,6 +67,7 @@ export default {
   name: "login",
   data() {
     return {
+      imgSrc: require('../../assets/imgs/login-background.png'),
       formdata: {
         username: "",
         password: ""
@@ -108,14 +112,20 @@ export default {
 .login-title h3 {
   text-align: left;
 }
+.login-wrap .background {
+  width: 100%;
+  height: 500px;
+  z-index: -1;
+  position: absolute;
+}
 .login-wrap .login-main {
   float: right;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  z-index: 1;
+  /*position: absolute;*/
 }
 .login-wrap {
   height: 100%;
-  background-color: aliceblue;
+  /*background-color: aliceblue;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,7 +134,7 @@ export default {
 .login-wrap .login-form {
   width: 400px;
   height: 365px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   border-radius: 5px;
   padding: 30px;
   /*text-align: right;*/
@@ -141,13 +151,17 @@ export default {
   height: 100%;
 }
 .el-header {
-  background-color: white;
+  /*background-color: white;*/
 }
 .el-main {
-  background-color: #ffffff;
-  background-repeat: no-repeat;
+  /*background-color: #ffffff;*/
+
   background-size: cover;
-  background-image: url("/public/images/firstimage/login-background.png");
+
+}
+back {
+  background-repeat: no-repeat;
+  background-image: "url(" + require("../assets/imgs/login-background.png") + ")";
 }
 .el-footer {
   margin: 25px;
