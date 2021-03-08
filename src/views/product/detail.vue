@@ -227,14 +227,14 @@ export default {
   color: #333;
   text-align: center;
   line-height: 160px;
-  /*margin-left: 3cm;*/
-  /*margin-right: 3cm;*/
 }
 .inf_detail {
   border-radius: 1px;
-  float: left;
+  float: right;
   width: 600px;
-  /*background-color: azure;*/
+  height: 500px;
+  line-height: 500px;
+  text-align: center;
 }
 .number {
   line-height: 90px;
