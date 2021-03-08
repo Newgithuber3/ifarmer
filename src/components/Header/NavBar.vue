@@ -76,9 +76,9 @@ export default {
     },
     handleCommand(command) {
       if (command === "a") {
-        this.$router.push("/");
+        this.$router.push("/userInfo");
       } else if (command === "b") {
-        this.$router.push("/");
+        this.$router.push("/userInfo");
       } else {
         this.$store.dispatch("user/logout");
         this.$router.push("/");

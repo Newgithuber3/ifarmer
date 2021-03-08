@@ -1,15 +1,10 @@
 <template>
+  <div>
   <div id="shopping-cart" class="page-shopping-cart">
     <el-container>
       <el-header>
-        <el-image
-          style="width: 110px; height: 60px"
-          src="/static/images/firstImage/titleLogo.png"
-          fit="fill"
-          class="logo"
-        >
-        </el-image>
-        <h1 class="cart-title">购物车</h1>
+
+        <h1 class="cart-title"><i style="color: #dd0a10;font-size: 30px" class="el-icon-shopping-cart-full"></i>&nbsp;购物车</h1>
         <div class="search">
           <input type="text" id="in" />
           <button class="btn_search">搜索</button>
@@ -107,31 +102,29 @@
       </el-main>
       <el-footer>
         <!-- 最后一行统计 -->
-
-        <div class="cart-product-info">
-          <td
-            colspan="4"
-            class="footer-right"
-            style="border-right: 1px solid #ddd;"
-          >
-            总计：<span style="color: red;">{{ totalMoney | formatMoney }}</span
-            >元
-            <button type="button" class="pay" @click="paySelect">去结算</button>
-          </td>
-        </div>
+        <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[10, 20, 50]"
+            :page-size="pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total"
+        >
+        </el-pagination>
       </el-footer>
     </el-container>
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="currentPage"
-      :page-sizes="[10, 20, 50]"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-    >
-    </el-pagination>
   </div>
+  <div style="width: 40%;float: bottom;margin-left: 60%;margin-bottom: 10%;">
+    <el-row>
+      <el-col :span="4">
+        <span style="font-size: 30px">总计：</span>
+      </el-col>
+      <el-col :span="6"> <span style="color: red;font-size: 30px">{{ totalMoney | formatMoney }}</span></el-col>
+      <el-col :span="6"><button class="pay" type="button" @click="paySelect">去结算</button></el-col>
+    </el-row>
+  </div>
+</div>
 </template>
 
 <script>
@@ -316,7 +309,7 @@ img {
 }
 .page-shopping-cart {
   width: 1200px;
-  margin: 0px auto;
+  margin: 0 auto;
   font-size: 14px;
   border: 1px solid #e3e3e3;
   /*border-top: 2px solid #317ee7;*/
@@ -408,38 +401,12 @@ img {
 .cart-product table .td-do {
   font-size: 12px;
 }
-/* 最后一行统计 */
-.cart-product-info {
-  overflow: hidden;
-  height: 80px;
-  line-height: 80px;
-  /*background: #f7f7f7;*/
-  font-size: 30px;
-}
-.cart-product-info .footer-right {
-  float: right;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 4;
-  padding-left: 10px;
-}
-.cart-product-info .product-total span {
-  font-size: 50px;
-}
-.cart-product-info .check-num span {
-  color: #e94826;
-}
-.cart-product-info .pay {
+.pay {
   background-color: darkorange;
   color: #fff;
   padding: 10px 25px;
-  margin: 0 55px 0 20px;
   border: 0;
   border-radius: 5px;
   font-size: 25px;
-}
-.cart-product-info .pay:hover {
-  background-color: darkorange;
 }
 </style>

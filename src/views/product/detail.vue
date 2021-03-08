@@ -2,7 +2,7 @@
   <div class="product_detail">
     <el-container>
       <el-header>
-        <div class="pro_name">
+        <div class="pro_name" style="margin-left: 45%">
           商品详情
         </div>
       </el-header>
@@ -42,64 +42,56 @@
             <div class="number">
               <label>数量：</label>
               <el-input-number
-                  size="small"
-                  v-model="number"
-                  :min="1"
-                  :max="100"
-                  label="描述文字"
+                size="small"
+                v-model="number"
+                :min="1"
+                :max="100"
+                label="描述文字"
               ></el-input-number>
             </div>
-            <div class="pro_buy" style="margin-left: 50px">
-              <el-row :gutter="1">
-                <el-col :span="12"
-                  ><el-button class="N_buy" type="primary"
-                    >立即购买
-                  </el-button></el-col
-                >
-                <el-col :span="10">
-                  <el-button
-                      @click="addCart"
-                    class="J_shop "
-                    type="primary"
-                    icon="el-icon-shopping-cart-1"
-                    >加入购物车</el-button
-                  >
-                </el-col>
-              </el-row>
-            </div>
-            <div class="promise">
-              <div class="long" style="margin-left: 40px">
-                <strong>服务承诺</strong>
-                &nbsp; 不支持七天无理由退换 &nbsp; 正品保证 &nbsp; 极速退款
-              </div>
-              <el-dropdown
-                size="medium"
-                split-button
-                type="primary"
-                @click="handleClick"
+            <el-row :gutter="1" style="height: 40px">
+              <el-col :span="12"
+                ><el-button @click="buyNow" class="N_buy" type="primary"
+                  >立即购买
+                </el-button></el-col
               >
-                付款方式
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>支付宝</el-dropdown-item>
-                  <el-dropdown-item>微信</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
+              <el-col :span="10">
+                <el-button
+                  @click="addCart"
+                  class="J_shop "
+                  type="primary"
+                  icon="el-icon-shopping-cart-1"
+                  >加入购物车</el-button
+                >
+              </el-col>
+            </el-row>
+            <div class="long" style="margin-top: 4%">
+              <strong>服务承诺</strong>
+              &nbsp;支持七天无理由退换 &nbsp; 正品保证 &nbsp; 极速退款
             </div>
           </div>
-          <div class="inf_more">
+          <div class="inf_more" style="margin-top: 6%;text-align: center">
             <span class="more_row1">
               商品详情介绍：
             </span>
             <div class="more_row2">
-              <strong>商品名称：{{ product.productDetail.name}}</strong>
+              <strong>商品名称：{{ product.productDetail.name }}</strong>
             </div>
             <div class="more_row3">
               <div class="parameter">
                 <strong>产品参数：</strong>
-                <div id="para_row1">产地：{{product.productParameter.origin}}</div>
-                <div id="para_row2">生产日期：{{product.productParameter.productionDate}}：</div>
-                <div id="para_row3">保质期：{{product.productParameter.expirationDate}}</div>
-                <div id="para_row4">备注：{{product.productParameter.note}}</div>
+                <div id="para_row1">
+                  产地：{{ product.productParameter.origin }}
+                </div>
+                <div id="para_row2">
+                  生产日期：{{ product.productParameter.productionDate | formatDate }}
+                </div>
+                <div id="para_row3">
+                  保质期：{{ product.productParameter.expirationDate }}
+                </div>
+                <div id="para_row4">
+                  备注：{{ product.productParameter.note }}
+                </div>
               </div>
             </div>
           </div>
@@ -107,11 +99,19 @@
 
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span style="float: left">店铺名：{{ product.seller.storename }}</span>
+            <span style="float: left"
+              >店铺名：{{ product.seller.storename }}</span
+            >
           </div>
           <div class="text item">
-            <a style="color: royalblue;text-decoration: none;line-height: 10px" href="#">进店逛逛&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a style="color: royalblue;text-decoration: none" href="#">收藏店铺</a>
+            <a
+              style="color: royalblue;text-decoration: none;line-height: 10px"
+              href="#"
+              >进店逛逛&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+            >
+            <a style="color: royalblue;text-decoration: none" href="#"
+              >收藏店铺</a
+            >
           </div>
         </el-card>
       </el-main>
@@ -123,8 +123,15 @@
 <script>
 import { getProduct } from "@/api/product";
 import { addCart } from "@/api/cart";
+import {formatDate} from "../../utils/date";
 
 export default {
+  filters: {
+    formatDate(time) {
+      const date = new Date(time);
+      return formatDate(date, "yyyy-MM-dd");
+    }
+  },
   data() {
     return {
       input: "",
@@ -149,6 +156,18 @@ export default {
         this.product = res.data.product;
       });
     },
+    buyNow() {
+      this.checkLogin();
+      const params = { productid: this.productId, number: this.number };
+      addCart(params).then(res => {
+        let ids = [];
+        ids.push(res.data.cartID);
+        this.$router.push({
+          name: "MakeOrder",
+          params: { ids: ids }
+        });
+      });
+    },
     addCart() {
       this.checkLogin();
       const params = { productid: this.productId, number: this.number };
@@ -168,7 +187,7 @@ export default {
     checkLogin() {
       const token = this.$store.getters.token;
       console.log(token);
-      if (token === "" || token === null || token === undefined){
+      if (token === "" || token === null || token === undefined) {
         this.$router.push("/login");
       }
     }
@@ -187,53 +206,15 @@ export default {
   margin-left: 1cm;
   margin-right: 1cm;
 }
-.nav {
-  width: 1350px;
-  height: 40px;
-  background-color: ghostwhite;
-  font-family: "Microsoft YaHei UI";
-  font-size: 150%;
-  font-style: italic;
-  font-weight: bold;
-  top: 0;
-  margin-left: 1cm;
-  margin-right: 1cm;
-}
-.search {
-  background-color: #dd0a10;
-  border: none;
-}
-
 .demo-image__placeholder {
   float: left;
-  height: 14cm;
   width: 12cm;
   margin-left: 1cm;
   background-color: white;
 }
-.shop {
-  color: #333333;
-  margin-bottom: auto;
-}
-.el-header,
-.el-footer {
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-}
-.el-main {
-  border-radius: 1px;
-  /*background-color: beige;*/
-  color: #333;
-  text-align: center;
-  line-height: 160px;
-}
 .inf_detail {
-  border-radius: 1px;
-  float: right;
-  width: 600px;
-  height: 500px;
-  line-height: 500px;
+  margin-left: 50%;
+  width: 40%;
   text-align: center;
 }
 .number {
@@ -258,20 +239,9 @@ export default {
 .long {
   font-family: 华文细黑;
   font-size: 20px;
-  line-height: 60px;
-}
-.promise {
-  font-size: 10px;
-  line-height: 100px;
 }
 .div_inline {
   display: inline;
-}
-.Net_weight {
-  line-height: 30px;
-}
-.pro_buy {
-  line-height: 30px;
 }
 .N_buy {
   background-color: blanchedalmond;
@@ -286,7 +256,6 @@ export default {
 }
 
 .inf_more {
-  height: 400px;
   background-color: white;
   float: right;
   width: 600px;
@@ -297,23 +266,6 @@ export default {
   font-size: 18px;
 }
 
-body > .el-container {
-  margin-bottom: 40px;
-}
-.el-input {
-  width: 350px;
-}
-.el-dropdown {
-  vertical-align: top;
-  line-height: normal;
-}
-.el-dropdown + .el-dropdown {
-  margin-left: 15px;
-}
-.el-icon-arrow-down {
-  font-size: 12px;
-}
-
 .box-card {
   width: 360px;
   margin-left: 90px;
@@ -322,7 +274,7 @@ body > .el-container {
 }
 
 .item {
-  margin:5px
+  margin: 5px;
 }
 
 .clearfix:before,
@@ -333,6 +285,4 @@ body > .el-container {
 .clearfix:after {
   clear: both;
 }
-
-
 </style>
